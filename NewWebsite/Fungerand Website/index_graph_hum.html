@@ -59,7 +59,124 @@
                 </div>
             </div>
     </div>
+    
     <div class ="n_box">
+      
+      <p style="margin-bottom:10px;"></p>
+      <div class="graphmenu">
+
+      <!-- Allt kopplat till Graf1: -->
+
+      <!-- Alla 3 select-knappar för att hämta data från klienten till Graf1-JS(V5JS-Graf.JS) -->
+          <select id="hej"  onchange="Refreshgraph()">
+              <option value="99">Välj mätplats:</option>
+            <option value="1">Simonsplats</option>
+            <option value="2">Hallonrummet</option>
+            <option value="3">Terrariet</option>
+            <option value="4">Klassrum</option>
+            <option value="5">Lars</option>
+            <option value="6">Genomsnitt(Alla dagar)</option>
+          </select>
+      <!-- Alternativ imellan temperatur och fuktighet -->
+      <select id="hejj"  onchange="Refreshgraph()">
+          <option value="99">Välj läge:</option>
+            <option value="1" id="humorad">Temperatur</option>
+            <option value="2" id="humorad">Fuktighet</option>
+          </select>
+
+<!-- Alternativ för viken dag man vill se  -->
+          <select id="hejjj"  onchange="Refreshgraph()">
+              <option value="99">Välj dag:</option>
+            
+              <option value="3">4/11</option>
+              <option value="4">5/11</option>
+              <option value="5">6/11</option>
+              <option value="6">7/11</option>
+              <option value="7">8/11</option>
+              <option value="8">9/11</option>
+              <option value="9">10/11</option>
+              <option value="10">11/11</option>
+          </select>
+
+        </div>
+        <!-- Flera div som visas vid sidan av grafen och innehåller textinformation.
+        Visar av default en beskrivning av respektive divs syfte. -->
+        <div class="Graf">
+          <div class="Nummer">
+            <div id="Nummer1"><p>Högsta mätningen: </p></div>
+            <div id="Nummer5"></div>
+            <div id="Nummer2"><p>Högre/Lägre än medel?</p></div>
+            <div id="Nummer7"><p></p></div>
+            <div id="Nummer8"><p>Mätvärde</p></div>
+            <div id="Nummer9"><p></p></div>
+            <div id="Nummer10"><p>Lägsta mätningen: </p></div>
+      
+      
+      
+          </div>
+          <!-- Boxar för "mätområdet" i graf1.
+          Detta är en flexbox som i sig är placerad i en större flexbox.
+          Mätytan innehåller 29 lodräta kolumner med 10 boxar repektive i höjd.
+          Data från JS är 1-10 och anges med hjälp av order-egenskapen hos de ifyllda(blåa) boxarna i respektive kolumn för att visualisera mätningarna. -->
+
+              <div class="MainGraf">
+                <div id="rad0"></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget1"onmouseenter="b1()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget2"onmouseenter="b2()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget3"onmouseenter="b3()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget4"onmouseenter="b4()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget5"onmouseenter="b5()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget6"onmouseenter="b6()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget7"onmouseenter="b7()">    </button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M1"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M2"></button></div>
+                <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M3"></button></div>
+                <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget8"onmouseenter="b8()">    </button></div>
+            
+              </div>
+<!-- Fixar alla tider under grafen  -->
+        </div>
+        <div class="undergraf">
+          <div class="undergrafbox">
+            <div id="Tid1"> <div id="L"><p>Tider -></p></div></div>
+            <div id="Tid2"></div>   
+            <div id="Tid3">._03:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._06:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._09:00_.</div>   
+            <div id="Tid4"></div>
+            <div id="Tid3">._12:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._15:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._18:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._21:00_.</div>
+            <div id="Tid4"></div>
+            <div id="Tid3">._24:00_.</div>
+         </div>
+        </div>
+      
+         <!-- test -->
         <div class="graphmenu">
             <a href="index_graph_hum.html">Luftfuktighet</a>
             <a href="index_graph_temp.html">Temperatur</a>
@@ -72,121 +189,6 @@
         <div id ="Lars"></div>
 
 
-        <p style="margin-bottom:10px;"></p>
-        <div class="graphmenu">
-
-        <!-- Allt kopplat till Graf1: -->
-
-        <!-- Alla 3 select-knappar för att hämta data från klienten till Graf1-JS(V5JS-Graf.JS) -->
-            <select id="hej"  onchange="Refreshgraph()">
-                <option value="99">Välj mätplats:</option>
-              <option value="1">Simonsplats</option>
-              <option value="2">Hallonrummet</option>
-              <option value="3">Terrariet</option>
-              <option value="4">Klassrum</option>
-              <option value="5">Lars</option>
-              <option value="6">Genomsnitt(Alla dagar)</option>
-            </select>
-        <!-- Alternativ imellan temperatur och fuktighet -->
-        <select id="hejj"  onchange="Refreshgraph()">
-            <option value="99">Välj läge:</option>
-              <option value="1" id="humorad">Temperatur</option>
-              <option value="2" id="humorad">Fuktighet</option>
-            </select>
-
-<!-- Alternativ för viken dag man vill se  -->
-            <select id="hejjj"  onchange="Refreshgraph()">
-                <option value="99">Välj dag:</option>
-              
-                <option value="3">4/11</option>
-                <option value="4">5/11</option>
-                <option value="5">6/11</option>
-                <option value="6">7/11</option>
-                <option value="7">8/11</option>
-                <option value="8">9/11</option>
-                <option value="9">10/11</option>
-                <option value="10">11/11</option>
-            </select>
-
-          </div>
-          <!-- Flera div som visas vid sidan av grafen och innehåller textinformation.
-          Visar av default en beskrivning av respektive divs syfte. -->
-          <div class="Graf">
-            <div class="Nummer">
-              <div id="Nummer1"><p>Högsta mätningen: </p></div>
-              <div id="Nummer5"></div>
-              <div id="Nummer2"><p>Högre/Lägre än medel?</p></div>
-              <div id="Nummer7"><p></p></div>
-              <div id="Nummer8"><p>Mätvärde</p></div>
-              <div id="Nummer9"><p></p></div>
-              <div id="Nummer10"><p>Lägsta mätningen: </p></div>
-        
-        
-        
-            </div>
-            <!-- Boxar för "mätområdet" i graf1.
-            Detta är en flexbox som i sig är placerad i en större flexbox.
-            Mätytan innehåller 29 lodräta kolumner med 10 boxar repektive i höjd.
-            Data från JS är 1-10 och anges med hjälp av order-egenskapen hos de ifyllda(blåa) boxarna i respektive kolumn för att visualisera mätningarna. -->
-
-                <div class="MainGraf">
-                  <div id="rad0"></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget1"onmouseenter="b1()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget12-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget2"onmouseenter="b2()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget23-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget3"onmouseenter="b3()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget34-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget4"onmouseenter="b4()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget45-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget5"onmouseenter="b5()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget56-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget6"onmouseenter="b6()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget67-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget7"onmouseenter="b7()">    </button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M1"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M2"></button></div>
-                  <div id="rad2"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget78-M3"></button></div>
-                  <div id="rad1"><div id="box1"></div><div id="box2"></div><div id="box3"></div><div id="box4"></div><div id="box5"></div><div id="box6"></div><div id="box7"></div><div id="box8"></div><div id="box9"></div><button id="boxtarget8"onmouseenter="b8()">    </button></div>
-              
-                </div>
-<!-- Fixar alla tider under grafen  -->
-          </div>
-          <div class="undergraf">
-            <div class="undergrafbox">
-              <div id="Tid1"> <div id="L"><p>Tider -></p></div></div>
-              <div id="Tid2"></div>   
-              <div id="Tid3">._03:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._06:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._09:00_.</div>   
-              <div id="Tid4"></div>
-              <div id="Tid3">._12:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._15:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._18:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._21:00_.</div>
-              <div id="Tid4"></div>
-              <div id="Tid3">._24:00_.</div>
-           </div>
-          </div>
-        
-           <!-- test -->
 
     </div>
     </div>
